@@ -1,8 +1,17 @@
 const Settings = settings();
 
+var max: number = null;
+function dryRun() {
+  max = 1;
+  main();
+}
+
 function main() {
   let threads = GmailApp.search(Settings.searchWord);
   let count = threads.length;
+  if (max != null && count != 0) {
+    count = max;
+  }
 
   for (let i = 0; i < count; i++) {
     let thread = threads[i];
