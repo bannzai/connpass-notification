@@ -68,7 +68,7 @@ namespace Events {
 
 }
 
-function matchedEvent(subject) {
+function matchedEvent(subject: string): Events {
   var all = Events.all();
   var e;
   all.forEach(function (event) {
@@ -79,7 +79,7 @@ function matchedEvent(subject) {
   return e;
 }
 
-function expectedEvent(subject) {
+function expectedEvent(subject: string): boolean {
   var all = Events.all();
   var result = false;
   all.forEach(function (event) {

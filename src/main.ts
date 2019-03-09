@@ -18,7 +18,7 @@ function main() {
   };
 }
 
-function sendIfExpected(thread) {
+function sendIfExpected(thread: GoogleAppsScript.Gmail.GmailThread) {
   let subject = thread.getFirstMessageSubject();
   if (!expectedEvent(subject)) {
     console.log(Utilities.formatString("Unexpected mail subject, got %s", subject));
@@ -31,12 +31,12 @@ function sendIfExpected(thread) {
 
   let jsonPayload = {
     "fallback": "Notfify connpass events from gmail",
-    "channel": event.channel,
+    "channel": Events.channel(event),
     "username": Settings.appName,
     "attachments": [
       {
-        "color": event.color,
-        "title": event.emoticon + subject,
+        "color": Events.color(event),
+        "title": Events.emoticon(event) + subject,
         "title_link": permanentLink,
         "fields": buildFields(event, messageHTMLBody),
         "ts": timestamp
@@ -51,7 +51,7 @@ function sendIfExpected(thread) {
     "muteHttpExceptions": true
   };
 
-  let response = UrlFetchApp.fetch(event.webhookURL, options);
+  let response = UrlFetchApp.fetch(Events.webhookURL(event), options);
   let responseCode = response.getResponseCode();
   let responseBody = response.getContentText();
 
