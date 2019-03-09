@@ -1,10 +1,12 @@
 function settings() {
   return {
-    'registerOrCancelWebHookURL': 'https://hooks.slack.com/services/XXXXXXXXX/YYYYYYYYY/ZZZZZZZZZZZZZZZZZZZZZZZZ',
-    'registerOrCancelNotifyChannel': '#registerOrCancel-channel',
-    'contactWebHookURL': 'https://hooks.slack.com/services/XXXXXXXXX/YYYYYYYYY/ZZZZZZZZZZZZZZZZZZZZZZZZ',
-    'contactNotifyChannel': '#contact-channel',
+    'appName': 'Gmail',
     'searchWord': 'from: no-reply@connpass.com',
-    'appName': 'Gmail'
+    'registerWebHookURL': 'https://hooks.slack.com/services/XXXXXXXXX/YYYYYYYYY/ZZZZZZZZZZZZZZZZZZZZZZZZ',
+    'registerNotificationChannel': '#registerOrCancel-channel',
+    'cancelWebHookURL': 'https://hooks.slack.com/services/XXXXXXXXX/YYYYYYYYY/ZZZZZZZZZZZZZZZZZZZZZZZZ',
+    'cancelNotificationChannel': '#registerOrCancel-channel',
+    'contactWebHookURL': 'https://hooks.slack.com/services/XXXXXXXXX/YYYYYYYYY/ZZZZZZZZZZZZZZZZZZZZZZZZ',
+    'contactNotificationChannel': '#contact-channel'
   }
 }

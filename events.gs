@@ -3,19 +3,25 @@ var EVENTS = createEnum({
     value : 1,
     suffix : 'に参加申し込みがありました',
     color: "#00FF00",
-    emoticon: ":tada:"
+    emoticon: ":tada:",
+    webhookURL: Settings.registerWebHookURL,
+    channel: Settings.registerNotificationChannel
   },
   CANCEL : {
     value : 2,
     suffix : 'に参加キャンセルがありました',
     color: "#FF0000",
-    emoticon: ":x:"
+    emoticon: ":x:",
+    webhookURL: Settings.cancelWebHookURL,
+    channel: Settings.cancelNotificationChannel
   },
   CONTACT : {
     value : 3,
     suffix : 'に関するお問い合わせ',
     color: "#0000FF",
-    emoticon: ":email:"
+    emoticon: ":email:",
+    webhookURL: Settings.contactWebHookURL,
+    channel: Settings.contactNotificationChannel
   }
 });
 
