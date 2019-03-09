@@ -20,16 +20,6 @@ $ vim ./src/settigs.ts # See: #Configure https://github.com/bannzai/connpass-not
 $ clasp push # Deploy to your Google Apps Script Editor
 ```
 
-## Environment
-
-connpass-notification を開発した時の諸々のバージョンです。
-
-| Environment | Command | Result | Require | 
-| --- | --- | --- | --- |
-| node | node --version | v8.12.0 | yes |
-| clasp | clasp --version | 2.0.1 | yes |
-| tsc | tsc -v | Version 3.3.3333 | no |
-
 ## Configure
 
 下記の項目を変更すれば使えるようになります。  
@@ -53,6 +43,17 @@ function settings(): _Settings {
 - `searchWords` には実際にGmailで検索をかけるキーワードを入れてください。
 - `xxxxWebHookURL` にはSlackのIncoming-WebHooksで作成したURLを入れてください。
 - `xxxxNotificationChannel` にはSlackのIncoming-WebHooksで設定した channel を入れてください。 `#` から始める必要があります。
+
+## Environment
+
+connpass-notification を開発した時の諸々のバージョンです。
+
+| Environment | Command | Result | Require | 
+| --- | --- | --- | --- |
+| node | node --version | v8.12.0 | yes |
+| clasp | clasp --version | 2.0.1 | yes |
+| tsc | tsc -v | Version 3.3.3333 | no |
+
 
 ## Tips
 このツールのentrypointは [main.ts](./src/main.ts)の `main` という関数です。  
