@@ -1,19 +1,22 @@
 # connpass-notification
+[connpass](https://connpass.com)を使用したイベント主催者向けのツールです。
+**connpass** で自分が立てたイベントに対して参加・キャンセル・お問い合わせについてGmailが来た時にSlackに通知するツールです。
 
-## Required
+## Environment
 
 connpass-notification を開発した時の諸々のバージョンです。
 
-| Environment | Command | Result |
-| --- | --- | --- |
-| node | node --version | v8.12.0 |
-| tsc | tsc -v | Version 3.3.3333 |
-| clasp | clasp --version | 2.0.1 |
+| Environment | Command | Result | Require | 
+| --- | --- | --- | --- |
+| node | node --version | v8.12.0 | yes |
+| clasp | clasp --version | 2.0.1 | yes |
+| tsc | tsc -v | Version 3.3.3333 | no |
 
 
 ## Deploy
 
 [clasp](https://github.com/google/clasp) + typescriptを使って開発をしています。
+[clasp](https://github.com/google/clasp)のインストールは必須です。
 もし`.ts` ファイルを変更する場合は `package.json` に `tsc` は含んでいないので注意が必要です。
 このまま使用する場合は [./src/settings.ts](./src/settings.ts)を変更することになりますが、おそらくtypescriptの準備までは必要ないです。
 詳しくは[Configureセクション](https://github.com/bannzai/connpass-notification#Configure) を見てください。
@@ -56,7 +59,21 @@ Deployするときのルートディレクトリの設定が必要です。
 }
 ```
 
+## Tips
+このツールのentrypointは [main.ts](./src/main.ts)の `main` という関数です。
+Googleが提供しているGoogle Apps Script(GAS) の開発環境から動作を確認ができます。
+`clasp` の open というコマンドで開発環境を開くことができます。
+
+```shell
+$ clasp open
+```
+
+ここから `main.ts` を選び `main` 関数を実行することで確認ができます。
+
+<img width="100%" src="https://user-images.githubusercontent.com/10897361/54073779-7da25e80-42ce-11e9-9cd6-03fbeab4df80.png" />
+
+GASには定期実行の設定もあり、Slackに流したい場合は設定することをおすすめします。
+
 ## LICENSE
 **connpass-notification** is available under the MIT license. See the [LICENSE](./LICENSE) file for more info.
-
 
