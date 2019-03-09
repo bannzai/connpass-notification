@@ -1,5 +1,5 @@
 function searchWord() {
-  return 'from: no-reply@connpass.com ' + Settings.eventName;
+  return Settings.searchWord;
 }
 
 function isContact(event) {
