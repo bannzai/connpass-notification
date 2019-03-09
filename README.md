@@ -2,8 +2,7 @@
 [connpass](https://connpass.com)を使用したイベント主催者向けのツールです。  
 **connpass** で自分が立てたイベントに対して参加・キャンセル・お問い合わせについてGmailが来た時にSlackに通知するツールです。  
 
-## Description
-**connpass-notification** では各主催者のSlackに通知できるようになっています。
+## Deploy
 **connpass-notification** でSlackに通知するためのステップは下記のとおりです。
 
 #### First
