@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/bannzai/connpass-notification/issues"
   },
-  "homepage": "https://github.com/bannzai/connpass-notification#readme"
+  "homepage": "https://github.com/bannzai/connpass-notification#readme",
+  "devDependencies": {
+    "@google/clasp": "^2.0.1",
+    "tslint": "^5.13.1"
+  }
 }
