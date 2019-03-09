@@ -5,32 +5,29 @@
 </a>'
 */
 
-function extractUserName(messageHTMLBody) {
-  var pattern = '<strong>(.+?)</strong>';
-  var regex = new RegExp(pattern);
+function extractUserName(messageHTMLBody: string) {
+  let pattern = '<strong>(.+?)</strong>';
+  let regex = new RegExp(pattern);
   return messageHTMLBody.match(regex)[1]
 }
 
-function extractUserNameLink(messageHTMLBody) {
-  var pattern = 'https://connpass.com/user/.+?/'
-  var regex = new RegExp(pattern);
-  if (!regex.length) {
-    Logger.log('contact: ' + messageHTMLBody);
-  }
+function extractUserNameLink(messageHTMLBody: string) {
+  let pattern = 'https://connpass.com/user/.+?/'
+  let regex = new RegExp(pattern);
   return messageHTMLBody.match(regex)[0]
 }
 
 /*
   <a href="mailto:example@example.example">example-example &lt;example@example.example&gt;</a></span></td>
 */
-function extractContactSourceName(messageHTMLBody) {
-  var pattern = '<a href=".+">.+ &lt;(.+?)&gt;</a></span></td>'
-  var regex = new RegExp(pattern);
+function extractContactSourceName(messageHTMLBody: string) {
+  let pattern = '<a href=".+">.+ &lt;(.+?)&gt;</a></span></td>'
+  let regex = new RegExp(pattern);
   return messageHTMLBody.match(regex)[1]
 }
 
-function extractContactSourceAddress(messageHTMLBody) {
-  var pattern = '<a href="mailto:(.+?)">'
-  var regex = new RegExp(pattern);
+function extractContactSourceAddress(messageHTMLBody: string) {
+  let pattern = '<a href="mailto:(.+?)">'
+  let regex = new RegExp(pattern);
   return messageHTMLBody.match(regex)[1]
 }
