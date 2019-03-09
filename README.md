@@ -68,6 +68,17 @@ $ clasp open
 
 <img width="100%" src="https://user-images.githubusercontent.com/10897361/54073779-7da25e80-42ce-11e9-9cd6-03fbeab4df80.png" />  
 
+仕組みとして未読のものを探して既読のメールにたどり着いたら関数が終わるようになっています。  
+もし未読のメールが多い場合は `dryRun` 関数を実行することができます。初期値として `1` が代入されており、この場合は最大1件の通知がされるようになります。
+
+```js
+var max: number = null;
+function dryRun() {
+  max = 1;
+  main();
+```
+
+
 GASには定期実行の設定もあり、Slackに流したい場合は設定することをおすすめします。  
 
 ## LICENSE
