@@ -6,12 +6,9 @@ function main() {
 
   for (let i = 0; i < count; i++) {
     let thread = threads[i];
-    //      if (!thread.isUnread()) {
-    //      // While already read mail.
-    //      break;
-    //    }
-    if (i > 10) {
-      return;
+    if (!thread.isUnread()) {
+      // While already read mail.
+      break;
     }
     sendIfExpected(thread)
     thread.markRead();
