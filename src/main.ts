@@ -44,8 +44,7 @@ function sendIfExpected(thread) {
     ],
   };
   var payload = JSON.stringify(jsonPayload);
-  var options =
-  {
+  var options: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions = {
     "method": "post",
     "contentType": "application/json",
     "payload": payload,
