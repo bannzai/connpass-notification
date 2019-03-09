@@ -1,3 +1,3 @@
-function contains(content, word) {
+function contains(content: string, word: string) {
   return content.indexOf(word) > 0
 }
