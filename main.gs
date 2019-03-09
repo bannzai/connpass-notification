@@ -1,7 +1,7 @@
 var Settings = settings();
 
 function main() {
-  var threads = GmailApp.search(searchWord());
+  var threads = GmailApp.search(Settings.searchWord);
   var count = threads.length;
   
   for (var i = 0; i < count; i++) {
@@ -31,7 +31,7 @@ function sendIfExpected(thread) {
   
   var jsonPayload = {
     "fallback": "Notfify connpass events from gmail",
-    "channel" : channelName(event),
+    "channel" : event.channel,
     "username" : Settings.appName,
     "attachments": [
       {
@@ -52,7 +52,7 @@ function sendIfExpected(thread) {
         "muteHttpExceptions": true
       };
   
-  var response = UrlFetchApp.fetch(webhookURL(event), options);
+  var response = UrlFetchApp.fetch(event.webhookURL, options);
   var responseCode = response.getResponseCode();
   var responseBody = response.getContentText();
   

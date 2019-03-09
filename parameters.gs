@@ -1,7 +1,3 @@
-function searchWord() {
-  return Settings.searchWord;
-}
-
 function isContact(event) {
   return event.value == EVENTS.CONTACT.value;
 }
@@ -34,23 +30,5 @@ function buildFields(event, messageHTMLBody) {
         "value": extractUserName(messageHTMLBody)
       }
     ]
-  }
-}
-
-function channelName(event) {
-  if (isContact(event)) {
-    return Settings.contactNotifyChannel;
-  } 
-  if (isRegisterOrCancel(event)) {
-    return Settings.registerOrCancelNotifyChannel; 
-  }
-}
-
-function webhookURL(event) {
-  if (isContact(event)) {
-    return Settings.registerOrCancelWebHookURL;
-  } 
-  if (isRegisterOrCancel(event)) {
-    return Settings.contactWebHookURL; 
   }
 }
