@@ -2,6 +2,25 @@
 [connpass](https://connpass.com)を使用したイベント主催者向けのツールです。  
 **connpass** で自分が立てたイベントに対して参加・キャンセル・お問い合わせについてGmailが来た時にSlackに通知するツールです。  
 
+## Description
+**connpass-notification** では各主催者のSlackに通知できるようになっています。
+**connpass-notification** でSlackに通知するためのステップは下記のとおりです。
+
+#### First
+[clasp](https://github.com/google/clasp) + typescriptを使って開発をしています。  
+[clasp](https://github.com/google/clasp)のインストールは必須です。[login](https://github.com/google/clasp#login)まで終わらせましょう
+
+#### Second
+自分の都合の良いディレクトリで下記のコマンドを実行していきます。
+
+```shell
+$ git clone git@github.com:bannzai/connpass-notification.git 
+$ cd connpass-notification
+$ clasp create --type standalone --rootDir ./src
+$ vim ./src/settigs.ts # See: #Configure https://github.com/bannzai/connpass-notification#Configure
+$ clasp push # Deploy to your Google Apps Script Editor
+```
+
 ## Environment
 
 connpass-notification を開発した時の諸々のバージョンです。
@@ -11,18 +30,6 @@ connpass-notification を開発した時の諸々のバージョンです。
 | node | node --version | v8.12.0 | yes |
 | clasp | clasp --version | 2.0.1 | yes |
 | tsc | tsc -v | Version 3.3.3333 | no |
-
-
-## Deploy
-
-[clasp](https://github.com/google/clasp) + typescriptを使って開発をしています。  
-[clasp](https://github.com/google/clasp)のインストールは必須です。  
-もし`.ts` ファイルを変更する場合は `package.json` に `tsc` は含んでいないので注意が必要です。  
-このまま使用する場合は [./src/settings.ts](./src/settings.ts)を変更することになりますが、おそらくtypescriptの準備までは必要ないです。  
-詳しくは[Configureセクション](https://github.com/bannzai/connpass-notification#Configure) を見てください。  
-
-[Configureセクション](https://github.com/bannzai/connpass-notification#Configure)の設定が終わったら[clasp](https://github.com/google/clasp#deploy)を使用して `deploy` を行います。  
-
 
 ## Configure
 
@@ -47,18 +54,6 @@ function settings(): _Settings {
 - `searchWords` には実際にGmailで検索をかけるキーワードを入れてください。
 - `xxxxWebHookURL` にはSlackのIncoming-WebHooksで作成したURLを入れてください。
 - `xxxxNotificationChannel` にはSlackのIncoming-WebHooksで設定した channel を入れてください。 `#` から始める必要があります。
-
-### .clasp.json
-`clasp` の設定ファイルです。  
-Deployするときのルートディレクトリの設定が必要です。  
-`rootDir` に `./src` と設定してあげます。  
-
-```js
-{
-  "scriptId":"scriptId",
-  "rootDir": "./src"
-}
-```
 
 ## Tips
 このツールのentrypointは [main.ts](./src/main.ts)の `main` という関数です。  
