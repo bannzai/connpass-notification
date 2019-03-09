@@ -1,3 +1,5 @@
+var Settings = settings();
+
 function main() {
   var threads = GmailApp.search(searchWord());
   var count = threads.length;
