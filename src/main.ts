@@ -1,4 +1,4 @@
-let Settings = settings();
+const Settings = settings();
 
 function main() {
   let threads = GmailApp.search(Settings.searchWord);
