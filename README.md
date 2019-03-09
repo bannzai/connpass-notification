@@ -1,6 +1,6 @@
 # connpass-notification
-[connpass](https://connpass.com)を使用したイベント主催者向けのツールです。
-**connpass** で自分が立てたイベントに対して参加・キャンセル・お問い合わせについてGmailが来た時にSlackに通知するツールです。
+[connpass](https://connpass.com)を使用したイベント主催者向けのツールです。  
+**connpass** で自分が立てたイベントに対して参加・キャンセル・お問い合わせについてGmailが来た時にSlackに通知するツールです。  
 
 ## Environment
 
@@ -15,18 +15,19 @@ connpass-notification を開発した時の諸々のバージョンです。
 
 ## Deploy
 
-[clasp](https://github.com/google/clasp) + typescriptを使って開発をしています。
-[clasp](https://github.com/google/clasp)のインストールは必須です。
-もし`.ts` ファイルを変更する場合は `package.json` に `tsc` は含んでいないので注意が必要です。
-このまま使用する場合は [./src/settings.ts](./src/settings.ts)を変更することになりますが、おそらくtypescriptの準備までは必要ないです。
-詳しくは[Configureセクション](https://github.com/bannzai/connpass-notification#Configure) を見てください。
+[clasp](https://github.com/google/clasp) + typescriptを使って開発をしています。  
+[clasp](https://github.com/google/clasp)のインストールは必須です。  
+もし`.ts` ファイルを変更する場合は `package.json` に `tsc` は含んでいないので注意が必要です。  
+このまま使用する場合は [./src/settings.ts](./src/settings.ts)を変更することになりますが、おそらくtypescriptの準備までは必要ないです。  
+詳しくは[Configureセクション](https://github.com/bannzai/connpass-notification#Configure) を見てください。  
 
-[Configureセクション](https://github.com/bannzai/connpass-notification#Configure)の設定が終わったら[clasp](https://github.com/google/clasp#deploy)を使用して `deploy` を行います。
+[Configureセクション](https://github.com/bannzai/connpass-notification#Configure)の設定が終わったら[clasp](https://github.com/google/clasp#deploy)を使用して `deploy` を行います。  
 
 
 ## Configure
 
-下記の項目を変更すれば使えるようになります。
+下記の項目を変更すれば使えるようになります。  
+
 ### [./src/settings.ts](./src/settings.ts)
 ```js
 function settings(): _Settings {
@@ -48,9 +49,9 @@ function settings(): _Settings {
 - `xxxxNotificationChannel` にはSlackのIncoming-WebHooksで設定した channel を入れてください。 `#` から始める必要があります。
 
 ### .clasp.json
-`clasp` の設定ファイルです。
-Deployするときのルートディレクトリの設定が必要です。
-`rootDir` に `./src` と設定してあげます。
+`clasp` の設定ファイルです。  
+Deployするときのルートディレクトリの設定が必要です。  
+`rootDir` に `./src` と設定してあげます。  
 
 ```js
 {
@@ -60,19 +61,19 @@ Deployするときのルートディレクトリの設定が必要です。
 ```
 
 ## Tips
-このツールのentrypointは [main.ts](./src/main.ts)の `main` という関数です。
-Googleが提供しているGoogle Apps Script(GAS) の開発環境から動作を確認ができます。
-`clasp` の open というコマンドで開発環境を開くことができます。
+このツールのentrypointは [main.ts](./src/main.ts)の `main` という関数です。  
+Googleが提供しているGoogle Apps Script(GAS) の開発環境から動作を確認ができます。  
+`clasp` の open というコマンドで開発環境を開くことができます。  
 
 ```shell
 $ clasp open
 ```
 
-ここから `main.ts` を選び `main` 関数を実行することで確認ができます。
+ここから `main.ts` を選び `main` 関数を実行することで確認ができます。  
 
-<img width="100%" src="https://user-images.githubusercontent.com/10897361/54073779-7da25e80-42ce-11e9-9cd6-03fbeab4df80.png" />
+<img width="100%" src="https://user-images.githubusercontent.com/10897361/54073779-7da25e80-42ce-11e9-9cd6-03fbeab4df80.png" />  
 
-GASには定期実行の設定もあり、Slackに流したい場合は設定することをおすすめします。
+GASには定期実行の設定もあり、Slackに流したい場合は設定することをおすすめします。  
 
 ## LICENSE
 **connpass-notification** is available under the MIT license. See the [LICENSE](./LICENSE) file for more info.
