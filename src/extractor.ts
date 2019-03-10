@@ -6,14 +6,14 @@
 */
 
 export function extractUserName(messageHTMLBody: string) {
-  let pattern = '<strong>(.+?)</strong>';
-  let regex = new RegExp(pattern);
+  const pattern = '<strong>(.+?)</strong>';
+  const regex = new RegExp(pattern);
   return messageHTMLBody.match(regex)[1]
 }
 
 export function extractUserNameLink(messageHTMLBody: string) {
-  let pattern = 'https://connpass.com/user/.+?/'
-  let regex = new RegExp(pattern);
+  const pattern = 'https://connpass.com/user/.+?/'
+  const regex = new RegExp(pattern);
   return messageHTMLBody.match(regex)[0]
 }
 
@@ -21,13 +21,13 @@ export function extractUserNameLink(messageHTMLBody: string) {
   <a href="mailto:example@example.example">example-example &lt;example@example.example&gt;</a></span></td>
 */
 export function extractContactSourceName(messageHTMLBody: string) {
-  let pattern = '<a href=".+">.+ &lt;(.+?)&gt;</a></span></td>'
-  let regex = new RegExp(pattern);
+  const pattern = '<a href=".+">.+ &lt;(.+?)&gt;</a></span></td>'
+  const regex = new RegExp(pattern);
   return messageHTMLBody.match(regex)[1]
 }
 
 export function extractContactSourceAddress(messageHTMLBody: string) {
-  let pattern = '<a href="mailto:(.+?)">'
-  let regex = new RegExp(pattern);
+  const pattern = '<a href="mailto:(.+?)">'
+  const regex = new RegExp(pattern);
   return messageHTMLBody.match(regex)[1]
 }

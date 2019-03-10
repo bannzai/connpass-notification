@@ -11,14 +11,14 @@ function dryRun() {
 }
 
 function main() {
-  let threads = GmailApp.search(Settings.searchWord);
+  const threads = GmailApp.search(Settings.searchWord);
   let count = threads.length;
   if (max != null && count != 0) {
     count = max;
   }
 
   for (let i = 0; i < count; i++) {
-    let thread = threads[i];
+    const thread = threads[i];
     if (!thread.isUnread()) {
       // While already read mail.
       break;
@@ -29,17 +29,17 @@ function main() {
 }
 
 function sendIfExpected(thread: GoogleAppsScript.Gmail.GmailThread) {
-  let subject = thread.getFirstMessageSubject();
+  const subject = thread.getFirstMessageSubject();
   if (!expectedEvent(subject)) {
     console.log(Utilities.formatString("Unexpected mail subject, got %s", subject));
     return;
   }
-  let event = matchedEvent(subject);
-  let messageHTMLBody = thread.getMessages()[0].getBody();
-  let permanentLink = thread.getPermalink();
-  let timestamp = thread.getLastMessageDate().getTime() / 1000;
+  const event = matchedEvent(subject);
+  const messageHTMLBody = thread.getMessages()[0].getBody();
+  const permanentLink = thread.getPermalink();
+  const timestamp = thread.getLastMessageDate().getTime() / 1000;
 
-  let jsonPayload = {
+  const jsonPayload = {
     "fallback": "Notfify connpass events from gmail",
     "channel": Events.channel(event),
     "username": Settings.appName,
@@ -53,17 +53,17 @@ function sendIfExpected(thread: GoogleAppsScript.Gmail.GmailThread) {
       }
     ],
   };
-  let payload = JSON.stringify(jsonPayload);
-  let options: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions = {
+  const payload = JSON.stringify(jsonPayload);
+  const options: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions = {
     "method": "post",
     "contentType": "application/json",
     "payload": payload,
     "muteHttpExceptions": true
   };
 
-  let response = UrlFetchApp.fetch(Events.webhookURL(event), options);
-  let responseCode = response.getResponseCode();
-  let responseBody = response.getContentText();
+  const response = UrlFetchApp.fetch(Events.webhookURL(event), options);
+  const responseCode = response.getResponseCode();
+  const responseBody = response.getContentText();
 
   if (responseCode != 200) {
     console.log(Utilities.formatString("Request failed. Expected 200, got %d: %s", responseCode, responseBody));
