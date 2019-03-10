@@ -1,3 +1,7 @@
+import { settings } from './settings'
+import { Events, matchedEvent, expectedEvent } from './events'
+import { buildFields } from './parameters'
+
 const Settings = settings();
 
 var max: number = null;

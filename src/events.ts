@@ -1,10 +1,15 @@
-enum Events {
+import { contains } from './strings'
+import { settings } from './settings'
+
+const Settings = settings();
+
+export enum Events {
   Register,
   Cancel,
   Contact
 }
 
-namespace Events {
+export namespace Events {
   export function suffix(event: Events): string {
     switch (event) {
       case Events.Register:
@@ -68,7 +73,7 @@ namespace Events {
 
 }
 
-function matchedEvent(subject: string): Events {
+export function matchedEvent(subject: string): Events {
   var all = Events.all();
   var e;
   all.forEach(function (event) {
@@ -79,7 +84,7 @@ function matchedEvent(subject: string): Events {
   return e;
 }
 
-function expectedEvent(subject: string): boolean {
+export function expectedEvent(subject: string): boolean {
   var all = Events.all();
   var result = false;
   all.forEach(function (event) {
