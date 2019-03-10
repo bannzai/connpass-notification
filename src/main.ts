@@ -35,37 +35,40 @@ function sendIfExpected(thread: GoogleAppsScript.Gmail.GmailThread) {
     return;
   }
   const event = matchedEvent(subject);
-  const messageHTMLBody = thread.getMessages()[0].getBody();
   const permanentLink = thread.getPermalink();
   const timestamp = thread.getLastMessageDate().getTime() / 1000;
+  const messages = thread.getMessages();
 
-  const jsonPayload = {
-    "fallback": "Notfify connpass events from gmail",
-    "channel": Events.channel(event),
-    "username": Settings.appName,
-    "attachments": [
-      {
-        "color": Events.color(event),
-        "title": Events.emoticon(event) + subject,
-        "title_link": permanentLink,
-        "fields": buildFields(event, messageHTMLBody),
-        "ts": timestamp
-      }
-    ],
-  };
-  const payload = JSON.stringify(jsonPayload);
-  const options: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions = {
-    "method": "post",
-    "contentType": "application/json",
-    "payload": payload,
-    "muteHttpExceptions": true
-  };
-
-  const response = UrlFetchApp.fetch(Events.webhookURL(event), options);
-  const responseCode = response.getResponseCode();
-  const responseBody = response.getContentText();
-
-  if (responseCode != 200) {
-    console.log(Utilities.formatString("Request failed. Expected 200, got %d: %s", responseCode, responseBody));
-  }
+  for(const message of messages){
+    const messageHTMLBody = message.getBody();
+    const jsonPayload = {
+      "fallback": "Notfify connpass events from gmail",
+      "channel": Events.channel(event),
+      "username": Settings.appName,
+      "attachments": [
+        {
+          "color": Events.color(event),
+          "title": Events.emoticon(event) + subject,
+          "title_link": permanentLink,
+          "fields": buildFields(event, messageHTMLBody),
+          "ts": timestamp
+        }
+      ],
+    };
+    const payload = JSON.stringify(jsonPayload);
+    const options: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions = {
+      "method": "post",
+      "contentType": "application/json",
+      "payload": payload,
+      "muteHttpExceptions": true
+    };
+  
+    const response = UrlFetchApp.fetch(Events.webhookURL(event), options);
+    const responseCode = response.getResponseCode();
+    const responseBody = response.getContentText();
+  
+    if (responseCode != 200) {
+      console.log(Utilities.formatString("Request failed. Expected 200, got %d: %s", responseCode, responseBody));
+    }
+  }  
 }
