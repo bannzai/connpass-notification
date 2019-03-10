@@ -37,6 +37,7 @@ function settings(): _Settings {
     'contactWebHookURL': 'https://hooks.slack.com/services/XXXXXXXXX/YYYYYYYYY/ZZZZZZZZZZZZZZZZZZZZZZZZ',
     'contactNotificationChannel': '#contact-channel'
   }
+}
 ```
 
 - `appName` にはSlackで通知される時に表示されてほしいユーザー名を入れてください。
@@ -76,6 +77,7 @@ var max: number = null;
 function dryRun() {
   max = 1;
   main();
+}
 ```
 
 
