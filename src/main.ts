@@ -40,10 +40,10 @@ function sendIfExpected(thread: GoogleAppsScript.Gmail.GmailThread) {
   const messages = thread.getMessages();
 
   for(const message of messages){
-    const messageHTMLBody = message.getBody();
     if(!message.isUnread){
       continue
     }
+    const messageHTMLBody = message.getBody();
     const jsonPayload = {
       "fallback": "Notfify connpass events from gmail",
       "channel": Events.channel(event),
