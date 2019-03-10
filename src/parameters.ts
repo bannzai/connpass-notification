@@ -1,10 +1,5 @@
 import { Events } from './events' 
-import {
-  extractContactSourceAddress,
-  extractContactSourceName,
-  extractUserNameLink,
-  extractUserName
-} from './extractor'
+import { extractContactSourceAddress, extractContactSourceName, extractUserNameLink, extractUserName } from './extractor'
 
 function isContact(event: Events) {
   return event == Events.Contact;
