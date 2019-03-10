@@ -40,7 +40,7 @@ function sendIfExpected(thread: GoogleAppsScript.Gmail.GmailThread) {
   const messages = thread.getMessages();
 
   for(const message of messages){
-    if(!message.isUnread){
+    if(!message.isUnread()){
       continue
     }
     const messageHTMLBody = message.getBody();
