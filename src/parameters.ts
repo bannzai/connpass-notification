@@ -1,3 +1,11 @@
+import { Events } from './events' 
+import {
+  extractContactSourceAddress,
+  extractContactSourceName,
+  extractUserNameLink,
+  extractUserName
+} from './extractor'
+
 function isContact(event: Events) {
   return event == Events.Contact;
 }
@@ -6,7 +14,7 @@ function isRegisterOrCancel(event: Events) {
   return event == Events.Register || event == Events.Cancel;
 }
 
-function buildFields(event: Events, messageHTMLBody: string) {
+export function buildFields(event: Events, messageHTMLBody: string) {
   if (isContact(event)) {
     return [
       {

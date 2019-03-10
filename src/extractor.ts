@@ -5,13 +5,13 @@
 </a>'
 */
 
-function extractUserName(messageHTMLBody: string) {
+export function extractUserName(messageHTMLBody: string) {
   let pattern = '<strong>(.+?)</strong>';
   let regex = new RegExp(pattern);
   return messageHTMLBody.match(regex)[1]
 }
 
-function extractUserNameLink(messageHTMLBody: string) {
+export function extractUserNameLink(messageHTMLBody: string) {
   let pattern = 'https://connpass.com/user/.+?/'
   let regex = new RegExp(pattern);
   return messageHTMLBody.match(regex)[0]
@@ -20,13 +20,13 @@ function extractUserNameLink(messageHTMLBody: string) {
 /*
   <a href="mailto:example@example.example">example-example &lt;example@example.example&gt;</a></span></td>
 */
-function extractContactSourceName(messageHTMLBody: string) {
+export function extractContactSourceName(messageHTMLBody: string) {
   let pattern = '<a href=".+">.+ &lt;(.+?)&gt;</a></span></td>'
   let regex = new RegExp(pattern);
   return messageHTMLBody.match(regex)[1]
 }
 
-function extractContactSourceAddress(messageHTMLBody: string) {
+export function extractContactSourceAddress(messageHTMLBody: string) {
   let pattern = '<a href="mailto:(.+?)">'
   let regex = new RegExp(pattern);
   return messageHTMLBody.match(regex)[1]

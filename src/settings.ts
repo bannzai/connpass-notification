@@ -9,7 +9,7 @@ interface _Settings {
   contactNotificationChannel: string
 }
 
-function settings(): _Settings {
+export function settings(): _Settings {
   return {
     'appName': 'Gmail',
     'searchWord': 'from: no-reply@connpass.com',
