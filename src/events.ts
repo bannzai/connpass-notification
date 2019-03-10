@@ -74,8 +74,8 @@ export namespace Events {
 }
 
 export function matchedEvent(subject: string): Events {
-  var all = Events.all();
-  var e;
+  const all = Events.all();
+  let e;
   all.forEach(function (event) {
     if (contains(subject, Events.suffix(event))) {
       e = event;
@@ -85,8 +85,8 @@ export function matchedEvent(subject: string): Events {
 }
 
 export function expectedEvent(subject: string): boolean {
-  var all = Events.all();
-  var result = false;
+  const all = Events.all();
+  let result = false;
   all.forEach(function (event) {
     result = result || contains(subject, Events.suffix(event));
   });
