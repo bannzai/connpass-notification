@@ -1,5 +1,5 @@
 import { Events } from './events'
-import { extractContactSourceAddress, extractContactSourceName, extractUserNameLink, extractUserName, extractEventName, extractEventLink } from './extractor'
+import { extractContactSourceAddress, extractContactSourceName, extractUserNameLink, extractUserName, extractEventName, extractEventLink, extractEventNameForContact, extractEventLinkForContact } from './extractor'
 
 function isContact(event: Events) {
   return event == Events.Contact;
@@ -21,8 +21,8 @@ export function buildFields(event: Events, messageHTMLBody: string) {
         "value": extractContactSourceName(messageHTMLBody)
       },
       {
-        "title": extractEventName(messageHTMLBody),
-        "value": extractEventLink(messageHTMLBody)
+        "title": extractEventNameForContact(messageHTMLBody),
+        "value": extractEventLinkForContact(messageHTMLBody)
       }
     ]
   }
