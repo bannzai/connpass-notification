@@ -57,7 +57,7 @@ export function extractEventLinkForCancel(messageHTMLBody: string) {
 }
 
 export function extractEventNameForCancel(messageHTMLBody: string) {
-  const pattern = '<a href="https://engineers-x-designers.connpass.com/event/[0-9]+/">(.+)</a>'
+  const pattern = '<a href="https://engineers-x-designers.connpass.com/event/.+">(.+)</a>'
   const regex = new RegExp(pattern);
   return messageHTMLBody.match(regex)[1]
 }
@@ -70,7 +70,7 @@ export function extractEventLinkForContact(messageHTMLBody: string) {
 }
 
 export function extractEventNameForContact(messageHTMLBody: string) {
-  const pattern = '<strong><a href="https://engineers-x-designers.connpass.com/event/[0-9]+/">(.+)</a></strong>'
+  const pattern = '<strong><a href="https://engineers-x-designers.connpass.com/event/.+">(.+)</a></strong>'
   const regex = new RegExp(pattern);
   return messageHTMLBody.match(regex)[1]
 }
