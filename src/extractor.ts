@@ -46,3 +46,17 @@ export function extractEventName(messageHTMLBody: string) {
   const regex = new RegExp(pattern);
   return messageHTMLBody.match(regex)[1]
 }
+
+/*
+「<strong><a href="https://engineers-x-designers.connpass.com/event/120545/">DXEL.3 エンジニアとデザイナーが「いい関係」を築くために</a></strong>」の管理者の皆様へ、以下のお問い合わせがあります。
+*/
+
+export function extractEventLinkForContact(messageHTMLBody: string) {
+  return extractEventLink(messageHTMLBody);
+}
+
+export function extractEventNameForContact(messageHTMLBody: string) {
+  const pattern = '<strong><a href="https://engineers-x-designers.connpass.com/event/[0-9]+/">(.+)</a></strong>'
+  const regex = new RegExp(pattern);
+  return messageHTMLBody.match(regex)[1]
+}
